@@ -1,4 +1,6 @@
-# Gestione Corsi, Partecipanti e Aziende
+# incluDO
+
+## Gestione Corsi, Partecipanti e Aziende
 
 Questo progetto prevede lo sviluppo di un sistema in TypeScript che modella la struttura operativa di una scuola di formazione professionale per migranti,
 concentrandosi sulle interazioni tra migranti, corsi di formazione e aziende partner
