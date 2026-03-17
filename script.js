@@ -1,6 +1,5 @@
-"use strict";
-class Partecipante {
-    constructor(nome, cognome, paeseOriginario, livelloIstruzione, competenzeLinguistiche, AmbitoFormazioneInteresse) {
+var Partecipante = /** @class */ (function () {
+    function Partecipante(nome, cognome, paeseOriginario, livelloIstruzione, competenzeLinguistiche, AmbitoFormazioneInteresse) {
         this.nome = nome;
         this.cognome = cognome;
         this.paeseOriginario = paeseOriginario;
@@ -8,50 +7,53 @@ class Partecipante {
         this.competenzeLinguistiche = competenzeLinguistiche;
         this.AmbitoFormazioneInteresse = AmbitoFormazioneInteresse;
     }
-    iscrivitiCorso(corso) {
+    Partecipante.prototype.iscrivitiCorso = function (corso) {
         if (corso.settoreProfessionale.toLowerCase === this.AmbitoFormazioneInteresse.toLowerCase) {
             corso.elencoIscritti.push(this);
         }
-    }
-}
-class Corso {
-    constructor(titoloCorso, descrizione, settoreProfessionale, durata) {
+    };
+    return Partecipante;
+}());
+var Corso = /** @class */ (function () {
+    function Corso(titoloCorso, descrizione, settoreProfessionale, durata) {
         this.titoloCorso = titoloCorso;
         this.descrizione = descrizione;
         this.settoreProfessionale = settoreProfessionale;
         this.durata = durata;
         this.elencoIscritti = [];
     }
-    aggiungiPartecipante(partecipante) { partecipante.iscrivitiCorso(this); }
-}
-class Azienda {
-    constructor(nomeAzienda, settoreAttivita, descrizione, posizioniAperte) {
+    Corso.prototype.aggiungiPartecipante = function (partecipante) { partecipante.iscrivitiCorso(this); };
+    return Corso;
+}());
+var Azienda = /** @class */ (function () {
+    function Azienda(nomeAzienda, settoreAttivita, descrizione, posizioniAperte) {
         this.nomeAzienda = nomeAzienda;
         this.settoreAttivita = settoreAttivita;
         this.descrizione = descrizione;
         this.posizioniAperte = posizioniAperte;
     }
-    offriPosizione(partecipante, posizione) {
+    Azienda.prototype.offriPosizione = function (partecipante, posizione) {
         if (this.posizioniAperte.includes(posizione)) {
-            console.log(`Posizione offerta a ${partecipante.nome} per la posizione di ${posizione} .`);
+            console.log("Posizione offerta a ".concat(partecipante.nome, " per la posizione di ").concat(posizione, " ."));
         }
         else {
-            console.log(`La posizione di ${posizione} non è disponibile .`);
+            console.log("La posizione di ".concat(posizione, " non \u00E8 disponibile ."));
         }
-    }
-}
-const partecipante1 = new Partecipante("Mario", "Rossi", "Italia", "Laurea", "Italiano, Inglese", "informatica");
-const partecipante2 = new Partecipante("ali", "verdi", "senegal", "elementare", "francese, italiano", "falegnameria");
-const partecipante3 = new Partecipante("mohamed", "muntari", "congo", "media", "francese, italiano", "muratore");
-const partecipante4 = new Partecipante("ahmed", "hassan", "egitto", "superiore", "arabo, italiano", "elettricista");
-const corso1 = new Corso("muratore", "Corso di formazione per muratori", "Edilizia", "3 mesi");
-const corso2 = new Corso("falegnameria", "Corso di formazione per falegnami", "Artigianato", "4 mesi");
-const corso3 = new Corso("elettricista", "Corso di formazione per elettricisti", "Elettronica", "5 mesi");
-const corso4 = new Corso("informatica", "Corso di formazione per informatici", "Tecnologia", "6 mesi");
-const azienda1 = new Azienda("tech company", "Tecnologia", "Azienda specializzata in soluzioni tecnologiche", ["sviluppatore", "designer"]);
-const azienda2 = new Azienda("edilizia srl", "Edilizia", "Azienda specializzata in costruzioni edili", ["muratore", "elettricista"]);
-const azienda3 = new Azienda("falegnameria spa", "falegnameria", "Azienda specializzatta nel lavorare il legno", ["falegname"]);
-const azienda4 = new Azienda("impianti sas", "Elettronica", "Azienda specializzata in impianti elettrici", ["elettricista"]);
+    };
+    return Azienda;
+}());
+var partecipante1 = new Partecipante("Mario", "Rossi", "Italia", "Laurea", "Italiano, Inglese", "informatica");
+var partecipante2 = new Partecipante("ali", "verdi", "senegal", "elementare", "francese, italiano", "falegnameria");
+var partecipante3 = new Partecipante("mohamed", "muntari", "congo", "media", "francese, italiano", "muratore");
+var partecipante4 = new Partecipante("ahmed", "hassan", "egitto", "superiore", "arabo, italiano", "elettricista");
+var corso1 = new Corso("muratore", "Corso di formazione per muratori", "Edilizia", "3 mesi");
+var corso2 = new Corso("falegnameria", "Corso di formazione per falegnami", "Artigianato", "4 mesi");
+var corso3 = new Corso("elettricista", "Corso di formazione per elettricisti", "Elettronica", "5 mesi");
+var corso4 = new Corso("informatica", "Corso di formazione per informatici", "Tecnologia", "6 mesi");
+var azienda1 = new Azienda("tech company", "Tecnologia", "Azienda specializzata in soluzioni tecnologiche", ["sviluppatore", "designer"]);
+var azienda2 = new Azienda("edilizia srl", "Edilizia", "Azienda specializzata in costruzioni edili", ["muratore", "elettricista"]);
+var azienda3 = new Azienda("falegnameria spa", "falegnameria", "Azienda specializzatta nel lavorare il legno", ["falegname"]);
+var azienda4 = new Azienda("impianti sas", "Elettronica", "Azienda specializzata in impianti elettrici", ["elettricista"]);
 azienda1.offriPosizione(partecipante1, "informatica");
 azienda2.offriPosizione(partecipante3, "muratore");
 azienda3.offriPosizione(partecipante2, "falegname");
